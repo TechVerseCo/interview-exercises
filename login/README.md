@@ -3,7 +3,7 @@
 
 #### **Objective**
 
-Create a Node.js application that provides user authentication using both email/password and social login (Google).
+Create a Node.js application that provides user authentication using both email/password and social login (e.g. Google, Facebook, Linkedin...).
 
 ----------
 
@@ -19,16 +19,16 @@ Create a Node.js application that provides user authentication using both email/
 2.  **Data Model** Users should have the following fields:
     
 ```json
-    `{
+    {
       "id": "string (UUID)",
       "email": "string (required, unique)",
       "password": "string (hashed, required for email/password registration)",
       "name": "string (optional)",
       "provider": "string (e.g., 'email' or 'google')",
-      "googleId": "string (optional, for Google users)",
+      "profileId": "string (optional, for Google users)",
       "createdAt": "ISO 8601 date string",
       "updatedAt": "ISO 8601 date string"
-    }` 
+    }
 ```    
 3.  **Authentication**
     
@@ -38,6 +38,7 @@ Create a Node.js application that provides user authentication using both email/
     
     -   Use **Passport.js** with the **Google OAuth 2.0** strategy for social login.
     -   Save the user's Google profile information (e.g., email, name, and Google ID) in the database if they log in for the first time.
+    -   
 5.  **Password Handling**
     
     -   Hash user passwords using **bcrypt** before saving them.
@@ -59,8 +60,7 @@ Create a Node.js application that provides user authentication using both email/
 
 #### **Setup Instructions**
 
--   Use **MongoDB** (or a similar database) to store user information.
--   Configure Google OAuth 2.0 credentials via the Google Cloud Console.
+-   Use **SQLite** (or any database) to store user information.
 
 ----------
 
@@ -71,5 +71,4 @@ Create a Node.js application that provides user authentication using both email/
     -   A `.env.example` file with placeholders for environment variables.
     -   A `README.md` file with:
         -   Instructions to install dependencies.
-        -   Steps to set up Google OAuth credentials.
         -   Steps to run the application.
